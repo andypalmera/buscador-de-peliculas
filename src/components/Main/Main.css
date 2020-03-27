@@ -1,0 +1,18 @@
+.main {
+    width: calc(100% - 95px);
+    /* +++++ que es  */
+    padding: 75px 0 0;
+    /* margin-left: 95px; */
+    background-color: #fff;
+    /* position: relative; */
+    height: auto;
+}
+.home {
+    position: relative;
+    left: 95px;
+    background: #f8f8f8;
+}
+.home-header {
+    display: flex;
+    flex-direction: column;
+}
