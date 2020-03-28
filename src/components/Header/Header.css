@@ -19,7 +19,7 @@
     height: 75px;
     right: 0;
     /* ++++que hace  */
-    display: flex;
+    display: flex; /* usar flex-direction */
     /* el display flex hace que tome toda la pantalla. ver otra vez como comienza vieo falcon master; */
     z-index: 5;
     /* ++++otra vez  */
@@ -38,13 +38,13 @@
 .header-search svg {
     width: 18px;
     height: 18px;
-    margin-top: -9px;
-    left: 30px;
+    margin-top: -9px; /* codigo repetido con linea 48 */
+    left: 30px; /* puedes borrar esto y user flex en el contenedor */
     pointer-events: none;
     /* +++++que hace  */
-    position: absolute;
-    top: 50%;
-    margin-top: -7px;
+    position: absolute; /* puedes borrar esto y user flex en el contenedor */
+    top: 50%; /* puedes borrar esto y user flex en el contenedor */
+    margin-top: -7px; /* ? por que
     /* ver fill y transition: ; */
 }
 

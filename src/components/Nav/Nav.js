@@ -3,6 +3,7 @@ import './Nav.css';
 import NavList from '../NavList/NavList.js';
 
 const Nav = props => {
+    // puedes usar destructing para la variable datos, tipo: const datos = { props }
     return (
         <nav className="nav">
             <a href="/" className="nav-logo">

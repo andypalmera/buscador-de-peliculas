@@ -4,6 +4,7 @@ import './NavItem.css';
 const NavItem = props => {
     return (
         <li className="nav-item">
+            {/* puedes usar destructuring o una libreria para asegurarte de que ese dato "href" lo tengas, la libreria se llama idx */}
             <a href={props.datos.href} className="nav-link">
                 <div className="nav-link-wrap">
                     <svg id="icon_popular" viewBox="0 0 30 30" width="100%" height="100%">

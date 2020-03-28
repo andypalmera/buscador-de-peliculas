@@ -1,7 +1,7 @@
 import React from 'react';
 import './Header.css';
 
-const Header = props => {
+const Header = props => { // props sin usar. usar const Header = () => {
     return (
         <div className="header">
             <div className="header-search">
