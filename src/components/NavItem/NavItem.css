@@ -1,14 +1,3 @@
-* {
-    box-sizing: border-box;
-    /*+++++ por que colocarselo a todo el documento? afecta a todas las cajas?  */
-}
-
-body,
-html {
-    height: 100%;
-    /*+++++ por que colocarle 100%? en que influye?  */
-}
-
 body {
     font-family: Roboto, sans-serif;
     line-height: 1.6;
@@ -21,7 +10,7 @@ body {
 .nav-item {
     box-sizing: border-box;
     width: 95px;
-    height: 95px;
+    /* height: 95px; */
     padding: 10px;
     border-bottom: 1px solid #f8f8f8;
     text-decoration: none;
@@ -34,8 +23,8 @@ body {
     display: flex;
     /* flex-wrap: wrap;  */
     /* no se que hace en este caso  */
-    align-items: center;
-    justify-content: center;
+    /* align-items: center; */
+    /* justify-content: center; */
     font-weight: 300;
     letter-spacing: 0.5px;
     color: rgba(8, 28, 36, 0.7);

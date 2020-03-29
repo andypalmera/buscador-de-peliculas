@@ -1,6 +1,8 @@
 import React from 'react';
 import './MainWrapper.css';
 
+import IMAGES_PATHS from '../../static/imagesPaths';
+
 /* 
 Para no repetir codigo, lo que usualmente se hace, cuando un componente es una lista de items se colocan
 los li en un componente aislado, por ejemplo <MovieItem/> con la prop de la data del item a mostrar.
@@ -48,7 +50,7 @@ const MainWrapper = props => {
                         <li className="movies-item ">
                             <a href="#" className="movies-item-link">
                                 <figure className="movies-item-poster">
-                                    <img src="./imagenes/killbill.jpg" alt="kill-bill-poster" className="movie-item-poster-image" />
+                                    <img src={IMAGES_PATHS.KILL_BILL_IMAGE_PATH} alt="kill-bill-poster" className="movie-item-poster-image" />
                                 </figure>
                                 <div className="movie-item-content">
                                     <p className="movie-item-title">Kill Bill</p>
@@ -58,7 +60,7 @@ const MainWrapper = props => {
                         <li className="movies-item ">
                             <a href="#" className="movies-item-link">
                                 <figure className="movies-item-poster">
-                                    <img src="./imagenes/killbill.jpg" alt="kill-bill-poster" className="movie-item-poster-image" />
+                                    <img src={IMAGES_PATHS.KILL_BILL_IMAGE_PATH} alt="kill-bill-poster" className="movie-item-poster-image" />
                                 </figure>
                                 <div className="movie-item-content">
                                     <p className="movie-item-title">Kill Bill</p>
@@ -68,7 +70,7 @@ const MainWrapper = props => {
                         <li className="movies-item ">
                             <a href="#" className="movies-item-link">
                                 <figure className="movies-item-poster">
-                                    <img src="./imagenes/killbill.jpg" alt="kill-bill-poster" className="movie-item-poster-image" />
+                                    <img src={IMAGES_PATHS.KILL_BILL_IMAGE_PATH} alt="kill-bill-poster" className="movie-item-poster-image" />
                                 </figure>
                                 <div className="movie-item-content">
                                     <p className="movie-item-title">Kill Bill</p>
@@ -78,7 +80,7 @@ const MainWrapper = props => {
                         <li className="movies-item ">
                             <a href="#" className="movies-item-link">
                                 <figure className="movies-item-poster">
-                                    <img src="./imagenes/killbill.jpg" alt="kill-bill-poster" className="movie-item-poster-image" />
+                                    <img src={IMAGES_PATHS.KILL_BILL_IMAGE_PATH} alt="kill-bill-poster" className="movie-item-poster-image" />
                                 </figure>
                                 <div className="movie-item-content">
                                     <p className="movie-item-title">Kill Bill</p>
@@ -88,7 +90,7 @@ const MainWrapper = props => {
                         <li className="movies-item ">
                             <a href="#" className="movies-item-link">
                                 <figure className="movies-item-poster">
-                                    <img src="./imagenes/killbill.jpg" alt="kill-bill-poster" className="movie-item-poster-image" />
+                                    <img src={IMAGES_PATHS.KILL_BILL_IMAGE_PATH} alt="kill-bill-poster" className="movie-item-poster-image" />
                                 </figure>
                                 <div className="movie-item-content">
                                     <p className="movie-item-title">Kill Bill</p>
