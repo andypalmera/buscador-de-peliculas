@@ -1,0 +1,37 @@
+.movies-item {
+    padding: 30px;
+    width: 20%;
+    /* habria que modificar las medidas en el @media  ... fijarse en medidas. 1024px, 768px y ?  */
+    /* creo que habria que ponerle in wrap y buscar como hacer que solo sean 4  */
+}
+.movies-item-link {
+    text-decoration: none;
+    color: rgba(8, 28, 36, 0.5);
+    font-weight: 300;
+}
+.movies-item-poster {
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    transform: translateZ(0);
+    background: #fff;
+    padding: 0;
+    margin: 0;
+}
+.movie-item-poster-image {
+    opacity: 1;
+    transform: scale(1);
+    /* investigar  */
+    /* ver transition:  */
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+.movies-item-content {
+    padding-top: 15px;
+}
+.movies-item-content p {
+    margin: 0;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    transition: color 0.5s ease;
+    /* el font-size cambia segun el tamaño  */
+}
