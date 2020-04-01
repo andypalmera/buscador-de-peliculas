@@ -1,7 +1,6 @@
-const svgs = {
-    popular: require('./imagenes/logo ada.svg'),
-    topRated: require('./imagenes/logo ada.svg'),
-    upcoming: require('./imagenes/logo ada.svg'),
-    nowPlaying: require('./imagenes/logo ada.svg'),
-    saludo: 'hola andy'
+export default {
+    POPULAR: require('./imagenes/popular.svg'),
+    NOW_PLAYING: require('./imagenes/now_playing.svg'),
+    TOP_RATED: require('./imagenes/top_rated.svg'),
+    UPCOMING: require('./imagenes/upcoming.svg')
 };
