@@ -1,8 +1,6 @@
 .movies-item {
     padding: 30px;
     width: 20%;
-    /* habria que modificar las medidas en el @media  ... fijarse en medidas. 1024px, 768px y ?  */
-    /* creo que habria que ponerle in wrap y buscar como hacer que solo sean 4  */
 }
 .movies-item-link {
     text-decoration: none;

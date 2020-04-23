@@ -4,8 +4,7 @@
     padding: 75px 0 0;
     /* margin-left: 95px; */
     background-color: #fff;
-    /* position: relative; */
-    height: auto;
+    height: 100%;
 }
 .home {
     position: relative;
@@ -15,4 +14,5 @@
 .home-header {
     display: flex;
     flex-direction: column;
+    height: 100%;
 }

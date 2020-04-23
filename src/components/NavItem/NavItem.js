@@ -1,7 +1,7 @@
 import React from 'react';
 import './NavItem.css';
 
-const NavItem = props => {
+const NavItem = (props) => {
     return (
         <li className="nav-item">
             <a href={props.datos.href} className="nav-link">
