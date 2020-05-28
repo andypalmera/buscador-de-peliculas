@@ -1,14 +1,16 @@
 import React from 'react';
-import './App.css';
-import Nav from './components/Nav/Nav';
-import Header from './components/Header/Header';
-import Main from './components/Main/Main';
-import svgs from './static/svgs.js';
-import Search from './components/Search/Search';
+import './Popular.css';
+import Nav from '../../Nav/Nav';
+import Header from '../../Header/Header';
+import svgs from '../../../static/svgs';
+import PopularList from './PopularList';
+import Search from '../../Search/Search';
+
+// import MoviesList from '../../MoviesList/MoviesList';
 
 const key = 'e1cf51738011c844c19b7280544c45a8';
 
-class App extends React.Component {
+class Popular extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -19,15 +21,12 @@ class App extends React.Component {
                 { href: '/sections/NowPlaying', svg: () => <img className="svg" src={svgs.NOW_PLAYING} alt="now-playing-svg" />, span: 'NOW PLAYING' },
             ],
             popular: [],
-            topRated: [],
-            upComing: [],
-            nowPlaying: [],
+            show: true,
             movies: [],
             getInfoSearch: false,
             value: '',
         };
     }
-
     onChangeName = (e) => {
         this.setState({
             value: e.target.value,
@@ -75,61 +74,36 @@ class App extends React.Component {
         this.setState({
             popular: movieList,
         });
-        console.log(response);
     };
-    upComingInfo = async (e) => {
-        const URL = `https://api.themoviedb.org/3/movie/upcoming?api_key=${key}`;
+
+    paginaActual = 2;
+
+    loadMore = async (e) => {
+        const pagina = this.paginaActual++;
+        const URL = `https://api.themoviedb.org/3/movie/now_playing?api_key=${key}&page=${pagina}`;
+
         const request = await fetch(URL);
         const response = await request.json();
 
         const movies = response.results;
-        const movieList = [];
+        if (movies.length < 20) {
+            this.setState({
+                show: false,
+            });
+        }
 
-        movies.forEach((movie) => {
-            movieList.push(movie);
-        });
-        this.setState({
-            upComing: movieList,
-        });
+        if (movies) {
+            movies.forEach((movie) => {
+                this.state.popular.push(movie);
+            });
+            this.setState({
+                popular: this.state.popular,
+            });
+        }
     };
-    topRatedInfo = async (e) => {
-        const URL = `https://api.themoviedb.org/3/movie/top_rated?api_key=${key}`;
-        const request = await fetch(URL);
-        const response = await request.json();
-
-        const movies = response.results;
-        const movieList = [];
-
-        movies.forEach((movie) => {
-            movieList.push(movie);
-        });
-        this.setState({
-            topRated: movieList,
-        });
-    };
-    nowPlayingInfo = async (e) => {
-        const URL = `https://api.themoviedb.org/3/movie/now_playing?api_key=${key}`;
-        const request = await fetch(URL);
-        const response = await request.json();
-
-        const movies = response.results;
-        const movieList = [];
-
-        movies.forEach((movie) => {
-            movieList.push(movie);
-        });
-        this.setState({
-            nowPlaying: movieList,
-        });
-    };
-
     componentDidMount() {
         this.popularInfo();
-        this.topRatedInfo();
-        this.upComingInfo();
-        this.nowPlayingInfo();
     }
-
     render() {
         return (
             <div>
@@ -138,16 +112,24 @@ class App extends React.Component {
                 {this.state.getInfoSearch === true && this.state.movies.length >= 0 ? (
                     <Search info={this.state.movies} value={this.state.value} />
                 ) : (
-                    <Main
-                        popularInfo={this.state.popular}
-                        topRatedInfo={this.state.topRated}
-                        upComingInfo={this.state.upComing}
-                        nowPlayingInfo={this.state.nowPlaying}
-                    />
+                    <section className="main">
+                        <section className="home">
+                            <section className="home-header">
+                                <PopularList popularInfo={this.state.popular} />
+                                {this.state.show ? (
+                                    <div className="movies-nav">
+                                        <button onClick={() => this.loadMore()}>LOAD MORE</button>
+                                    </div>
+                                ) : (
+                                    <div></div>
+                                )}
+                            </section>
+                        </section>
+                    </section>
                 )}
             </div>
         );
     }
 }
 
-export default App;
+export default Popular;

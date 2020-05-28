@@ -5,8 +5,16 @@ const Header = (props) => {
     return (
         <div className="header">
             <div className="header-search">
-                <form onSubmit={props.getInfo}>
-                    <input type="text" placeholder="Search for a movie..." className="header-search-input" name="searchValue" autoComplete="off" />
+                <form onSubmit={props.getInfo} className="header-search-form">
+                    <input
+                        type="text"
+                        placeholder="Search for a movie..."
+                        className="header-search-input"
+                        name="searchValue"
+                        value={props.value}
+                        autoComplete="off"
+                        onChange={(e) => props.onChangeName(e)}
+                    />
                     <svg id="iconSearch" viewBox="0 0 30 30" width="100%" height="100%">
                         <title>Search</title>
                         <path

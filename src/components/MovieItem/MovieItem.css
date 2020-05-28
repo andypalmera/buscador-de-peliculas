@@ -1,6 +1,7 @@
 .movies-item {
     padding: 30px;
     width: 20%;
+    list-style: none;
 }
 .movies-item-link {
     text-decoration: none;
@@ -13,15 +14,17 @@
     background: #fff;
     padding: 0;
     margin: 0;
+    width: 185px;
 }
 .movie-item-poster-image {
     opacity: 1;
-    transform: scale(1);
-    /* investigar  */
-    /* ver transition:  */
+
     display: block;
-    max-width: 100%;
-    height: auto;
+    width: 100%;
+}
+.movie-item-poster-image:hover {
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    transform: scale(2);
 }
 .movies-item-content {
     padding-top: 15px;

@@ -1,6 +1,5 @@
 .header {
     position: fixed;
-    /* +++ que otra cosa hace fixed ademas de fijarlo? ver lo que ocurre en el navegador. probar  */
     background: #fff;
     z-index: 15;
     /* +++que es este index  */
@@ -11,18 +10,19 @@
     border-top: 0;
     border-bottom: 0;
     top: 0;
-    /* que es este top?  */
+    display: block;
 }
 .header-search {
     position: relative;
-    /* ++++que hace ? */
     height: 75px;
     right: 0;
-    /* ++++que hace  */
     display: flex;
-    /* el display flex hace que tome toda la pantalla. ver otra vez como comienza vieo falcon master; */
     z-index: 5;
-    /* ++++otra vez  */
+}
+.header-search-form {
+    display: flex;
+    align-items: center;
+    width: 100%;
 }
 .header-search-input {
     display: block;
@@ -41,11 +41,7 @@
     margin-top: -9px;
     left: 30px;
     pointer-events: none;
-    /* +++++que hace  */
     position: absolute;
     top: 50%;
     margin-top: -7px;
-    /* ver fill y transition: ; */
 }
-
-/* ====================== MAIN ======================= */

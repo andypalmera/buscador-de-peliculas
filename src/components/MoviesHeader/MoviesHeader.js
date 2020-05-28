@@ -1,11 +1,12 @@
 import React from 'react';
+import './MoviesHeader.css';
 
-const MoviesHeader = () => {
+const MoviesHeader = (props) => {
     return (
         <header className="movies-header">
-            <h2 className="movies__title">Popular Movies</h2>
+            <h2 className="movies__title">{props.categorie} Movies</h2>
 
-            <a href="https://www.google.com.ar/" className="movies-link">
+            <a href={props.path} className="movies-link">
                 View All
             </a>
         </header>
