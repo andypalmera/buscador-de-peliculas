@@ -4,6 +4,9 @@ import './Header.css';
 const Header = (props) => {
     return (
         <div className="header">
+            <a href="/" className="nav-logo">
+                <img src="../../../imagenes/logo ada.svg" alt="" className="nav-logo-image" />
+            </a>
             <div className="header-search">
                 <form onSubmit={props.getInfo} className="header-search-form">
                     <input
@@ -24,6 +27,9 @@ const Header = (props) => {
                         />
                     </svg>
                 </form>
+            </div>
+            <div className="nav-hamburguer" onClick={props.showNavDrawer}>
+                {props.NavDrawerIcon === false ? <i class="fas fa-bars"></i> : <i class="fas fa-times"></i>}
             </div>
         </div>
     );

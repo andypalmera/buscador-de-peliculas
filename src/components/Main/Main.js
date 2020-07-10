@@ -5,7 +5,7 @@ import MoviesList from '../MoviesList/MoviesList';
 
 const Main = (props) => {
     return (
-        <section className="main">
+        <section className="main" style={props.mainFixed === true ? { position: 'fixed' } : {}}>
             <section className="home">
                 <section className="home-header">
                     <HomeHeaderWrap />
@@ -15,6 +15,7 @@ const Main = (props) => {
                         topRatedInfo={props.topRatedInfo}
                         upComingInfo={props.upComingInfo}
                         nowPlayingInfo={props.nowPlayingInfo}
+                        showModal={props.showModal}
                     />
                 </section>
             </section>

@@ -9,12 +9,52 @@ class MovieItem extends React.Component {
             image: props.data.poster_path,
             noImage: imagenes,
             title: props.data.original_title,
+            backdrop: `https://image.tmdb.org/t/p/w185${props.data.backdrop_path}`,
+            overview: props.data.overview,
+            id: props.data.id,
+            gender: props.data.genre_ids,
+            date: props.data.release_date,
+            idNoShow: props.idNoShow,
+            // watch: () => {
+            //     this.setState({
+            //         image: this.state.image,
+            //         title: this.state.title,
+            //         backdrop: `https://image.tmdb.org/t/p/w185${this.state.backdrop}`,
+            //         overview: this.state.overview,
+            //         id: this.state.id,
+            //         gender: this.state.gender,
+            //         date: this.state.date,
+            //     });
+            // },
         };
     }
+
+    // watch = () => {
+    //     this.setState({
+    //         image: this.state.image,
+    //         title: this.state.title,
+    //         backdrop: `https://image.tmdb.org/t/p/w185${this.state.backdrop}`,
+    //         overview: this.state.overview,
+    //         id: this.state.id,
+    //         gender: this.state.gender,
+    //         date: this.state.date,
+    //     });
+    // };
+    // componentDidMount() {
+    //     this.watch();
+    //     console.log('hola vale');
+    // }
+
     render() {
         return (
-            <li className="movies-item">
-                <a href="#" className="movies-item-link">
+            <li className="movies-item" id={this.state.idNoShow}>
+                <a
+                    href="#"
+                    className="movies-item-link"
+                    onClick={(e) => {
+                        this.props.showModal(e, this.state.backdrop, this.state.overview, this.state.id, this.state.gender, this.state.date);
+                    }}
+                >
                     <figure className="movies-item-poster">
                         {this.state.image ? (
                             <img
@@ -34,29 +74,5 @@ class MovieItem extends React.Component {
         );
     }
 }
-
-// const MovieItem = (props) => {
-//     const poster =
-//         props.data.poster_path === null ? (
-//             <img src={imagenes} alt="popular-svg" style={{ width: 185 }} />
-//         ) : (
-//             <img
-//                 src={`https://image.tmdb.org/t/p/w185${props.data.poster_path}`}
-//                 alt={props.data.original_title + 'poster'}
-//                 className="movies-item-poster-image"
-//             />
-//         );
-
-//     return (
-//         <li className="movies-item">
-//             <a href="#" className="movies-item-link">
-//                 <figure className="movies-item-poster">{poster}</figure>
-//                 <div className="movie-item-content">
-//                     <p className="movie-item-title">{props.data.original_title}</p>
-//                 </div>
-//             </a>
-//         </li>
-//     );
-// };
 
 export default MovieItem;

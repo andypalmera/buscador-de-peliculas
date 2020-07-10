@@ -5,6 +5,8 @@ import Header from './components/Header/Header';
 import Main from './components/Main/Main';
 import svgs from './static/svgs.js';
 import Search from './components/Search/Search';
+import Modal from './components/Modal/Modal';
+import NavDrawer from './components/NavDrawer/NavDrawer';
 
 const key = 'e1cf51738011c844c19b7280544c45a8';
 
@@ -25,6 +27,16 @@ class App extends React.Component {
             movies: [],
             getInfoSearch: false,
             value: '',
+            showModal: false,
+            modalTitle: '',
+            modalURLImage: '',
+            modalOverview: '',
+            modalBackdrop: '',
+            modalId: '',
+            modalGender: '',
+            modalDate: '',
+            showNavDrawer: false,
+            totalResults: '',
         };
     }
 
@@ -32,7 +44,6 @@ class App extends React.Component {
         this.setState({
             value: e.target.value,
         });
-        console.log(this.state.value);
     };
 
     getInfo = async (e) => {
@@ -41,9 +52,8 @@ class App extends React.Component {
         const movieValue = this.state.value;
 
         if (movieValue.length > 0) {
-            console.log(this.state.value);
-            const URL = `https://api.themoviedb.org/3/search/movie?api_key=${key}&query=${movieValue}`;
-            const request = await fetch(URL);
+            const url = `https://api.themoviedb.org/3/search/movie?api_key=${key}&query=${movieValue}`;
+            const request = await fetch(url);
             const response = await request.json();
             const movies = response.results;
             const movieList = [];
@@ -55,6 +65,7 @@ class App extends React.Component {
                 this.setState({
                     movies: movieList,
                     getInfoSearch: true,
+                    totalResults: response.total_results,
                 });
             } else {
             }
@@ -62,11 +73,12 @@ class App extends React.Component {
     };
 
     popularInfo = async (e) => {
-        const URL = `https://api.themoviedb.org/3/movie/popular?api_key=${key}`;
-        const request = await fetch(URL);
+        const url = `https://api.themoviedb.org/3/movie/popular?api_key=${key}`;
+        const request = await fetch(url);
         const response = await request.json();
 
         const movies = response.results;
+
         const movieList = [];
 
         movies.forEach((movie) => {
@@ -75,11 +87,10 @@ class App extends React.Component {
         this.setState({
             popular: movieList,
         });
-        console.log(response);
     };
     upComingInfo = async (e) => {
-        const URL = `https://api.themoviedb.org/3/movie/upcoming?api_key=${key}`;
-        const request = await fetch(URL);
+        const url = `https://api.themoviedb.org/3/movie/upcoming?api_key=${key}`;
+        const request = await fetch(url);
         const response = await request.json();
 
         const movies = response.results;
@@ -93,8 +104,8 @@ class App extends React.Component {
         });
     };
     topRatedInfo = async (e) => {
-        const URL = `https://api.themoviedb.org/3/movie/top_rated?api_key=${key}`;
-        const request = await fetch(URL);
+        const url = `https://api.themoviedb.org/3/movie/top_rated?api_key=${key}`;
+        const request = await fetch(url);
         const response = await request.json();
 
         const movies = response.results;
@@ -108,8 +119,8 @@ class App extends React.Component {
         });
     };
     nowPlayingInfo = async (e) => {
-        const URL = `https://api.themoviedb.org/3/movie/now_playing?api_key=${key}`;
-        const request = await fetch(URL);
+        const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${key}`;
+        const request = await fetch(url);
         const response = await request.json();
 
         const movies = response.results;
@@ -123,6 +134,29 @@ class App extends React.Component {
         });
     };
 
+    showModal = (e, backdrop, overview, id, gender, date) => {
+        this.setState({
+            showModal: true,
+            modalTitle: e.target.alt,
+            modalURLImage: e.target.src,
+            modalBackdrop: backdrop,
+            modalOverview: overview,
+            modalId: id,
+            modalGender: gender,
+            modalDate: date,
+        });
+    };
+    hideModal = () => {
+        this.setState({
+            showModal: false,
+        });
+    };
+    toggleNavDrawer = () => {
+        this.setState({
+            showNavDrawer: !this.state.showNavDrawer,
+        });
+    };
+
     componentDidMount() {
         this.popularInfo();
         this.topRatedInfo();
@@ -133,16 +167,33 @@ class App extends React.Component {
     render() {
         return (
             <div>
+                {this.state.showModal === true ? (
+                    <Modal
+                        backdrop={this.state.modalBackdrop}
+                        modalURLImage={this.state.modalURLImage}
+                        modalTitle={this.state.modalTitle}
+                        modalGender={this.state.modalGender}
+                        modalDate={this.state.modalDate}
+                        modalOverview={this.state.modalOverview}
+                        modalId={this.state.modalId}
+                        hideModal={this.hideModal}
+                    />
+                ) : (
+                    <div style={{ display: 'none' }}> </div>
+                )}
+                {this.state.showNavDrawer === true ? <NavDrawer datos={this.state.data} /> : <div style={{ display: 'none' }}> </div>}
                 <Nav datos={this.state.data} />
-                <Header getInfo={this.getInfo} onChangeName={this.onChangeName} />
+                <Header getInfo={this.getInfo} onChangeName={this.onChangeName} showNavDrawer={this.toggleNavDrawer} NavDrawerIcon={this.state.showNavDrawer} />
                 {this.state.getInfoSearch === true && this.state.movies.length >= 0 ? (
-                    <Search info={this.state.movies} value={this.state.value} />
+                    <Search info={this.state.movies} value={this.state.value} totalResults={this.state.totalResults} />
                 ) : (
                     <Main
                         popularInfo={this.state.popular}
                         topRatedInfo={this.state.topRated}
                         upComingInfo={this.state.upComing}
                         nowPlayingInfo={this.state.nowPlaying}
+                        showModal={this.showModal}
+                        mainFixed={this.state.showModal === true ? true : false}
                     />
                 )}
             </div>

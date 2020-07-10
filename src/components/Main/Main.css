@@ -5,6 +5,7 @@
     /* margin-left: 95px; */
     background-color: #fff;
     height: 100%;
+    top: 0px;
 }
 .home {
     position: relative;
@@ -15,4 +16,21 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+}
+
+@media (max-width: 768px) {
+    .main {
+        /* position: relative; */
+        /* left: 0;
+        width: calc(100%); */
+    }
+    .home {
+        left: 0;
+        position: absolute;
+        top: 50px;
+    }
+    .home-header {
+        display: flex;
+        flex-direction: column;
+    }
 }

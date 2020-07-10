@@ -7,14 +7,12 @@ const nowPlayingList = (props) => {
             <header className="movies-header">
                 <h2 className="movies__title">Now Playing Movies</h2>
 
-                <a href="https://www.google.com.ar/" className="movies-link">
-                    10.000 results
-                </a>
+                <p className="movies-link">{props.totalResults} results</p>
             </header>
 
             <ul className="movies-list">
                 {props.nowPlayingInfo.map((pelicula) => (
-                    <MovieItem data={pelicula} />
+                    <MovieItem data={pelicula} showModal={props.showModal} />
                 ))}
             </ul>
         </div>

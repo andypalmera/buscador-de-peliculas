@@ -20,3 +20,8 @@
     text-decoration: none;
     /* tiene un transition: ; */
 }
+@media (max-width: 768px) {
+    .movies-header {
+        padding: 20px 10px;
+    }
+}

@@ -22,35 +22,16 @@ body {
 
 .nav {
     position: fixed;
-    top: 0;
+    top: 75px;
     left: 0;
     background: #fff;
     width: 95px;
+    display: block;
     /*+++++ PENDIENTE: tenia un z-index: 10  */
 }
 
-/* =========== */
-.nav-logo {
-    display: flex;
-    /* puedo utilizar position y tratar a sus hijos manualmente pero es menos practico  */
-    align-items: center;
-    /* los mueve hacia arriba y hacia abajo, si esto en row- si estoy en column los mueve de derecha o izquierda  */
-    justify-content: center;
-    /* los mueve en eje horizontal si estoy en row  */
-    background: #081c24;
-    width: 95px;
-    height: 75px;
-}
-.nav-logo-image {
-    width: 45px;
-    height: 40px;
-    color: white;
-    /* ++++++por que colocarle medidas a las imagenes? en vez de colocar contenedor y aplicar el 100%  */
-
-    /* PEDIENTE: ACA IBA UN FILL Y UN TRANSITION  */
-}
-
-/* ================= recuerda llevarte esto el nuevo componente*/
-.nav-hamburguer {
-    display: none;
+@media (max-width: 768px) {
+    .nav {
+        display: none;
+    }
 }

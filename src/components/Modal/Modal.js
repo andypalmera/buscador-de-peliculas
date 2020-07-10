@@ -3,13 +3,40 @@ import './Modal.css';
 
 const Modal = (props) => {
     return (
-        <section className="modal">
+        <div className="modal">
             <div className="modal-container">
-                <div className="modal-image"></div>
-                <div className="modal poster"> {props.image}</div>
-                <div className="modal-info"> esta pelicula es un asco</div>
+                <header
+                    className="movie-header"
+                    style={{
+                        backgroundImage: `url(${props.backdrop})`,
+                        position: 'relative',
+                        backgroundSize: 'cover',
+                        backgroundRepeat: 'no-repeat',
+                        backgroundPosition: '50% 50%',
+                        backgroundColor: '#4e585c',
+                    }}
+                >
+                    <div className="image-container">
+                        <img src={props.modalURLImage} alt={props.modalTitle + 'poster'} className="movies-item-poster-image" />
+                    </div>
+                    <h2 className="title-modal">{props.modalTitle}</h2>
+                    <div className="exit-modal" onClick={props.hideModal}>
+                        x
+                    </div>
+                </header>
+                <section className="movie-main">
+                    <div className="movie-main-container">
+                        <div className="modal-overview">
+                            <p>{props.modalOverview}</p>
+                        </div>
+                        <div className="modal-date">
+                            <h3 className="date-header">RELEASE DATE</h3>
+                            <p className="date-content">{props.modalDate}</p>
+                        </div>
+                    </div>
+                </section>
             </div>
-        </section>
+        </div>
     );
 };
 export default Modal;
